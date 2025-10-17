@@ -1,6 +1,4 @@
-/* General Body Styles */
 body {
-    /* ACCESSIBILITY FEATURE: High-contrast text (#111) on a light background (#fefefe) meets WCAG AA/AAA standards. */
     background-color: #fefefe;
     color: #111;
     font-family: sans-serif;
@@ -10,7 +8,7 @@ body {
     padding: 20px;
 }
 
-/* Page Structure & Regions */
+/* Estructura y Regiones */
 header, footer {
     text-align: center;
     padding: 1rem 0;
@@ -25,12 +23,11 @@ nav ul {
     margin-bottom: 2rem;
 }
 
-/* Headings & Links */
+/* Encabezados y Enlaces */
 h1, h2 {
-    color: #005f73; /* A darker, high-contrast color for headings */
+    color: #005f73;
 }
 
-/* ACCESSIBILITY FEATURE: The nav heading is visually hidden but available to screen readers to provide context for the navigation links. */
 nav h2 {
     position: absolute;
     left: -10000px;
@@ -45,7 +42,6 @@ a {
     font-weight: bold;
 }
 
-/* ACCESSIBILITY FEATURE: A highly visible focus indicator helps keyboard users see which element is currently selected. */
 a:focus,
 input:focus,
 button:focus {
@@ -53,7 +49,7 @@ button:focus {
     outline-offset: 2px;
 }
 
-/* Image Styling */
+/* Imágenes */
 img {
     max-width: 100%;
     height: auto;
@@ -61,7 +57,7 @@ img {
     margin: 1rem 0;
 }
 
-/* Table Styling */
+/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -84,7 +80,7 @@ thead {
     background-color: #e9ecef;
 }
 
-/* Form Styling */
+/* Formularios */
 form {
     background-color: #f8f9fa;
     border: 1px solid #ddd;
@@ -118,7 +114,7 @@ input[type="text"],
 input[type="email"] {
     width: 100%;
     padding: 10px;
-    box-sizing: border-box; /* Ensures padding doesn't affect the final width */
+    box-sizing: border-box;
     border: 1px solid #ccc;
 }
 
@@ -131,11 +127,64 @@ button {
     font-size: 1rem;
 }
 
-/* Estilos para el mensaje de confirmación del formulario */
+/* Mensaje de confirmación */
 #form-message {
     text-align: center;
     margin-top: 1.5rem;
     font-weight: bold;
-    color: #005f73; /* Usa un color que combine con el diseño */
+    color: #005f73;
     font-size: 1.1rem;
+}
+
+@media screen and (max-width: 600px) {
+
+    body {
+        /* Reduce el padding para dar más espacio al contenido */
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Reduce un poco el tamaño del título principal */
+    }
+
+    nav ul {
+        /* Cambia la dirección del menú a vertical */
+        flex-direction: column;
+        align-items: center; /* Centra los elementos */
+        gap: 15px; /* Ajusta el espacio entre enlaces */
+    }
+
+    /* --- Transformación de la Tabla --- */
+    
+    /* Oculta los encabezados originales de la tabla */
+    thead {
+        display: none;
+    }
+
+    /* Convierte la tabla y sus elementos a bloques para apilarlos */
+    table, tbody, tr, td {
+        display: block;
+        width: 100%;
+    }
+
+    tr {
+        margin-bottom: 15px; /* Añade espacio entre cada "fila" de datos */
+    }
+
+    td {
+        /* Posiciona el texto del dato a la derecha */
+        text-align: right; 
+        padding-left: 50%; /* Crea espacio a la izquierda para la etiqueta */
+        position: relative;
+    }
+
+    td::before {
+        /* Crea una pseudo-etiqueta usando el atributo 'data-label' del HTML */
+        content: attr(data-label);
+        position: absolute;
+        left: 10px;
+        width: 45%;
+        text-align: left; /* Alinea la etiqueta a la izquierda */
+        font-weight: bold;
+    }
 }
