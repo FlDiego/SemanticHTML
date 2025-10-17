@@ -1,3 +1,7 @@
+/* =================================== */
+/* ==   ESTILOS GENERALES (ESCRITORIO)  == */
+/* =================================== */
+
 body {
     background-color: #fefefe;
     color: #111;
@@ -6,9 +10,9 @@ body {
     margin: 0 auto;
     max-width: 800px;
     padding: 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
 }
 
-/* Estructura y Regiones */
 header, footer {
     text-align: center;
     padding: 1rem 0;
@@ -20,14 +24,14 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 2rem;
+    margin: 0 0 2rem 0;
 }
 
-/* Encabezados y Enlaces */
 h1, h2 {
     color: #005f73;
 }
 
+/* Oculta el h2 de la navegación visualmente pero lo mantiene para accesibilidad */
 nav h2 {
     position: absolute;
     left: -10000px;
@@ -40,16 +44,22 @@ nav h2 {
 a {
     color: #005f73;
     font-weight: bold;
+    text-decoration: none;
 }
 
+a:hover {
+    text-decoration: underline;
+}
+
+/* Indicador de foco visible para usuarios de teclado */
 a:focus,
 input:focus,
 button:focus {
     outline: 3px solid #94d2bd;
     outline-offset: 2px;
+    border-radius: 2px;
 }
 
-/* Imágenes */
 img {
     max-width: 100%;
     height: auto;
@@ -57,7 +67,6 @@ img {
     margin: 1rem 0;
 }
 
-/* Tablas */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -68,6 +77,7 @@ caption {
     font-weight: bold;
     margin-bottom: 0.5rem;
     font-style: italic;
+    color: #333;
 }
 
 th, td {
@@ -80,7 +90,6 @@ thead {
     background-color: #e9ecef;
 }
 
-/* Formularios */
 form {
     background-color: #f8f9fa;
     border: 1px solid #ddd;
@@ -116,18 +125,24 @@ input[type="email"] {
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
+    border-radius: 4px;
 }
 
 button {
-    padding: 10px 20px;
+    width: 100%;
+    padding: 12px 20px;
     background-color: #005f73;
     color: #ffffff;
     border: none;
     cursor: pointer;
     font-size: 1rem;
+    border-radius: 4px;
 }
 
-/* Mensaje de confirmación */
+button:hover {
+    background-color: #004c5a;
+}
+
 #form-message {
     text-align: center;
     margin-top: 1.5rem;
@@ -136,55 +151,65 @@ button {
     font-size: 1.1rem;
 }
 
+/* ============================================ */
+/* ==   ESTILOS RESPONSIVE PARA TELÉFONOS    == */
+/* ============================================ */
+/* Se aplicarán en pantallas de 600px o menos */
 @media screen and (max-width: 600px) {
 
     body {
-        /* Reduce el padding para dar más espacio al contenido */
-        padding: 15px;
+        padding: 15px; /* Menos espacio en los bordes */
     }
 
     h1 {
-        font-size: 1.8rem; /* Reduce un poco el tamaño del título principal */
+        font-size: 1.7rem; /* Título principal ligeramente más pequeño */
     }
 
+    /* El menú de navegación se apila verticalmente */
     nav ul {
-        /* Cambia la dirección del menú a vertical */
         flex-direction: column;
-        align-items: center; /* Centra los elementos */
-        gap: 15px; /* Ajusta el espacio entre enlaces */
+        align-items: center;
+        gap: 15px;
     }
 
-    /* --- Transformación de la Tabla --- */
+    /* --- Arreglo para la Tabla Responsiva --- */
     
-    /* Oculta los encabezados originales de la tabla */
+    /* 1. Ocultamos los encabezados originales */
     thead {
         display: none;
     }
 
-    /* Convierte la tabla y sus elementos a bloques para apilarlos */
-    table, tbody, tr, td {
-        display: block;
-        width: 100%;
-    }
-
+    /* 2. Hacemos que cada fila se comporte como una tarjeta */
     tr {
-        margin-bottom: 15px; /* Añade espacio entre cada "fila" de datos */
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        overflow: hidden;
     }
-
+    
+    /* 3. Las celdas se apilan una sobre otra */
     td {
-        /* Posiciona el texto del dato a la derecha */
-        text-align: right; 
-        padding-left: 50%; /* Crea espacio a la izquierda para la etiqueta */
+        display: block;
+        text-align: right; /* Alineamos el dato a la derecha */
+        border: none;
+        border-bottom: 1px solid #eee; /* Línea divisoria entre datos */
         position: relative;
+        padding-left: 110px; /* Dejamos espacio para la etiqueta */
     }
 
+    /* 4. Quitamos la línea divisoria de la última celda de cada tarjeta */
+    tr td:last-child {
+        border-bottom: none;
+    }
+
+    /* 5. Creamos la "etiqueta" a la izquierda usando el atributo 'data-label' */
     td::before {
-        /* Crea una pseudo-etiqueta usando el atributo 'data-label' del HTML */
-        content: attr(data-label);
+        content: attr(data-label); /* Toma el texto del atributo data-label del HTML */
         position: absolute;
         left: 10px;
-        width: 45%;
-        text-align: left; /* Alinea la etiqueta a la izquierda */
         font-weight: bold;
+        text-align: left;
+        color: #111;
     }
 }
