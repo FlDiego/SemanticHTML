@@ -93,7 +93,8 @@
 
             contactForm.addEventListener('submit', function(event) {
                 event.preventDefault();
-                formMessage.textContent = '¡Mensaje enviado con éxito! Gracias por suscribirte.';
+                formMessage.textContent = '¡Mensaje enviado con éxito! Pronto lo contactaremos.';
+                setTimeout(function() {formMessage.textContent = '';}, 3000);
                 contactForm.reset();
             });
         });
