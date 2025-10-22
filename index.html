@@ -26,7 +26,7 @@
             <h2>Sobre Nuestra Organización</h2>
             <p>Nos dedicamos a promover la accesibilidad web para todos. Una web accesible ayuda a las personas con discapacidad a participar más activamente en la sociedad.</p>
             
-            <img src="https://picsum.photos/id/177/600/400" alt="Un grupo diverso de personas sonriendo y trabajando juntas alrededor de una laptop.">
+            <img src="https://picsum.photos/id/177/600/400" alt="">
         </section>
 
         <section id="schedule">
@@ -87,21 +87,13 @@
     </footer>
 
     <script>
-        // Espera a que todo el contenido de la página se cargue
         document.addEventListener('DOMContentLoaded', function() {
-            // Selecciona el formulario y el div del mensaje por sus IDs
             const contactForm = document.getElementById('contact-form');
             const formMessage = document.getElementById('form-message');
 
-            // Agrega un "escuchador" para el evento de envío del formulario
             contactForm.addEventListener('submit', function(event) {
-                // Previene el comportamiento por defecto del formulario (que es recargar la página)
                 event.preventDefault();
-
-                // Muestra el mensaje de éxito
                 formMessage.textContent = '¡Mensaje enviado con éxito! Gracias por suscribirte.';
-                
-                // Opcional: Limpia el formulario después de enviarlo
                 contactForm.reset();
             });
         });
